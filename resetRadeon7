@@ -1,0 +1,16 @@
+#/bin/sh
+
+echo "Removing device from PCI bus..."
+echo "1" | sudo tee -a /sys/bus/pci/devices/0000\:44\:00.0/remove # <-GPU
+echo "1" | sudo tee -a /sys/bus/pci/devices/0000\:44\:00.1/remove # <-HDMI/DP
+echo "Sleeping for 3 seconds..."
+sleep 3
+echo "Suspending..."
+sudo systemctl suspend
+echo "Sleeping for 3 seconds..."
+sleep 3
+echo "Rescanning bus..."
+echo "1" | sudo tee -a /sys/bus/pci/rescan
+
+lspci -vv | grep vfio -B 12
+

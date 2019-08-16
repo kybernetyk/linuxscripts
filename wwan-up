@@ -1,0 +1,35 @@
+#!/bin/sh
+echo -n "."
+sudo systemctl start ModemManager
+echo "sleeping for a few seconds waiting for ModemManager..."
+sleep 3
+
+echo -n "."
+sudo rfkill unblock wwan
+sleep 3
+echo -n "."
+sudo mmcli -i 0 --pin=6018
+echo -n "."
+sudo mmcli -i 0 -e
+echo -n "."
+sudo mmcli -m 0 --simple-connect="pin=6018,apn=internet.eplus.de,allowed-auth=CHAP,user='blau',password='blau'"
+echo "sleeping and waiting for connection to go up..."
+sleep 3
+echo -n "."
+ipaddr=`sudo mmcli -b 0 |grep address |awk '{print $3}'`
+echo -n "."
+ipaddr2=`echo $ipaddr/16`
+echo -n "."
+gw=`sudo mmcli -b 0 |grep gateway |awk '{print $3}'`
+echo "ip is: $ipaddr"
+echo "ip is: $ipaddr2"
+echo "gw is: $gw"
+
+echo -n "."
+sudo ip addr add $ipaddr/16 dev wwp0s20f0u6
+echo -n "."
+sudo ip link set dev wwp0s20f0u6 up
+echo -n "."
+sudo ip route add default via $gw
+
+echo "done. connected. if you're seeing error run this again. the device probably wasn't up quick enough"

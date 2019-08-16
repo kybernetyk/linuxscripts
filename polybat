@@ -1,0 +1,9 @@
+#!/bin/sh
+remaining=`acpi | awk '{print $5}'`
+power=`batpower`
+
+if [ -z "$remaining" ]; then
+	echo "]"
+else
+	echo " | $remaining | $power]"
+fi

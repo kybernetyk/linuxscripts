@@ -1,0 +1,7 @@
+#!/bin/sh
+ison=`tplug.py -t 192.168.0.144 -c info |grep Re |cut -d ' ' -f 2- |jq .system.get_sysinfo.relay_state`
+if [[ $ison == 0 ]]; then
+	plug1_on
+else
+	plug1_off
+fi

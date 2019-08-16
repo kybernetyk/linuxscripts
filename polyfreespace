@@ -1,0 +1,9 @@
+#!/bin/sh
+total_rep=`df -hl --total |grep total`
+total_size=`echo $total_rep |awk '{print $2}'`
+used=`echo $total_rep |awk '{print $3}'`
+free=`echo $total_rep |awk '{print $4}'`
+
+label=" ${used}/${total_size}"
+
+echo $label

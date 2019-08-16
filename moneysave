@@ -1,0 +1,21 @@
+#!/usr/bin/env python
+import math
+import sys
+
+my_age = (2019 - 1982)
+meh_age = 45
+old_age = 55
+omfg_age = 65
+
+growth_rate = 1.08
+price = float(sys.argv[1])
+
+years = [0, 1, 5, 10, 15, 20]
+years.append(meh_age - my_age)
+years.append(old_age - my_age)
+years.append(omfg_age - my_age)
+years.sort()
+
+for y in years:
+    alt_money = price * (growth_rate ** y)
+    print("{:2}y [{:2}yo]{:20.2f} EUR".format(y, my_age + y, alt_money))

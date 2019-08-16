@@ -1,0 +1,6 @@
+#!/bin/sh
+json=`tplug.py -t 192.168.0.94 -c energy | grep Re |cut -d ' ' -f 2-`
+mw=`echo $json |jq .emeter.get_realtime.power_mw`
+watt=`echo "${mw} / 1000.0" | bc -l`
+res=`printf "%.2f" $watt`
+echo $res

@@ -1,0 +1,16 @@
+#!/bin/bash
+#ffmpeg -activation_bytes 25eacf03 -i $1 -vn -c:a copy $1.m4a
+
+#from https://epicfails.xyz/posts/2016-04-14-listening-to-audible-books-on-linux.html
+audible4linux () {
+  file=$1
+  #this takes the current file name and strips the extension.
+  name=$( basename $file .aax)
+  #your ffmpeg to decrypt your .aax file.
+  ffmpeg -threads 32 -activation_bytes 25eacf03 -i $file  -vn -c:a copy $name.m4a
+}
+
+#calls the function and takes the file as input.
+audible4linux $1
+
+

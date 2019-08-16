@@ -1,0 +1,4 @@
+#!/bin/sh
+hashrate >> ~/.local/logs/hashrate.log
+cat ~/.local/logs/hashrate.log | tail -n 100 |asciigraph -h 23 -c "Hashrate H/S"
+

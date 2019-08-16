@@ -1,0 +1,30 @@
+#!/bin/sh
+echo -n "."
+ipaddr=`sudo mmcli -b 0 |grep address |awk '{print $3}'`
+echo -n "."
+ipaddr2=`echo $ipaddr/16`
+echo -n "."
+gw=`sudo mmcli -b 0 |grep gateway |awk '{print $3}'`
+echo "ip is: $ipaddr"
+echo "ip is: $ipaddr2"
+echo "gw is: $gw"
+
+echo -n "."
+sudo mmcli -m 0 --simple-disconnect
+sleep 3
+echo -n "."
+sudo ip addr delete $ipaddr2 dev wwp0s20f0u6
+echo -n "."
+sudo ip route delete default via $gw
+echo -n "."
+sudo ip link set dev wwp0s20f0u6 down
+echo -n "."
+sudo systemctl stop ModemManager
+echo -n "."
+sleep 3
+sudo rfkill block wwan
+echo -n "."
+sleep 3
+echo "."
+
+echo "done. disconnected"

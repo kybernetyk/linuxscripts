@@ -1,0 +1,4 @@
+#!/bin/sh
+echo "syntax: `basename $0` <left> <center> <right>"
+feh --bg-fill $2 $3 $1
+

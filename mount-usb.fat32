@@ -1,0 +1,9 @@
+#!/bin/sh
+sudo mount -o gid=wheel,fmask=113,dmask=002 /dev/sdc1 /media/usb
+if [ $? -ne 0 ]; then
+	echo "failed to mount usb stick"
+else
+	echo "usb stick [/dev/sdc1] mounted to /media/usb"
+fi
+
+

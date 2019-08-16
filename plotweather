@@ -1,0 +1,6 @@
+#!/bin/sh
+temp=`curl --silent 'wttr.in/viersen?format=%t' |sed 's/\+//g' |sed 's/°C//g'`
+echo $temp >> .local/logs/weather.log
+
+cat ~/.local/logs/weather.log | tail -n 100 |asciigraph -h 23 -c "Weather Temp in C"
+

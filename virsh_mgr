@@ -1,0 +1,3 @@
+#!/bin/sh
+LIBVIRT_DEFAULT_URI="qemu:///system" virsh
+

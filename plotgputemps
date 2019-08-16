@@ -1,0 +1,7 @@
+#!/bin/sh
+
+#called in plotcputemps
+#temps >> ~/.local/logs/temps.log
+
+cat ~/.local/logs/temps.log |tail -n 230 |grep GPU1 |awk '{print $2}' | asciigraph -h 23 -c "GPU1 Temp"
+

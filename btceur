@@ -1,0 +1,2 @@
+#!/bin/sh
+printf "%.2f\n" `curl https://api.cryptonator.com/api/ticker/BTC-EUR -s | jq -r .ticker.price`

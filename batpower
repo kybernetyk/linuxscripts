@@ -1,0 +1,9 @@
+#!/bin/bash
+pwr=`awk '{print $1*10^-6}' /sys/class/power_supply/BAT0/power_now`
+state=`cat /sys/class/power_supply/BAT0/status`
+
+if [ "$state" == "Charging" ]; then
+	printf "+%.2f J/s\n" $pwr
+else
+	printf "%.2f J/s\n" $pwr
+fi

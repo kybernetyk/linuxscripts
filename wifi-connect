@@ -1,0 +1,3 @@
+#!/bin/sh
+#nmcli connect up BoNg0N3t
+sudo systemctl start wpa_supplicant@wlp59s0

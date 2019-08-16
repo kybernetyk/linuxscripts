@@ -1,0 +1,4 @@
+#!/bin/sh
+json=`curl --silent https://www.supportxmr.com/api/miner/4214Bi1gaE2VrWo1sJFXj7BKbEYZNoxuHhkgGwVDs1afMVnucx9fdJuDvSKr4W55U9QyzAnYtGdX295ByD7JzmcqJ77iuMR/stats/allWorkers`
+hrate=`echo $json |jq .global.hash`
+echo $hrate

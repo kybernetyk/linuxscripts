@@ -1,0 +1,4 @@
+#!/bin/sh
+plug2_wattage >> ~/.local/logs/power.log
+cat ~/.local/logs/power.log | tail -n 100 |asciigraph -h 23 -c "Power Drain in Watt"
+

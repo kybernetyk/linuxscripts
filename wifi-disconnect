@@ -1,0 +1,3 @@
+#!/bin/sh
+#nmcli connect down BoNg0N3t
+sudo systemctl stop wpa_supplicant@wlp59s0

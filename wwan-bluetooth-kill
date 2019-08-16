@@ -1,0 +1,3 @@
+#!/bin/sh
+sudo rfkill block wwan
+rfkill
