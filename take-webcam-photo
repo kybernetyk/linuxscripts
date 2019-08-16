@@ -1,0 +1,5 @@
+#!/bin/sh
+
+fn=`date +"%Y-%m-%d_%H:%M:%S.jpg"`
+
+fswebcam -S 10 --resolution 1920x1080 --title "Viersen UFO-CAM" --timestamp  "%Y-%m-%d %H:%M:%S (%Z)" ~/Pictures/webcam/${fn}
