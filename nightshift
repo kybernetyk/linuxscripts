@@ -1,2 +1,2 @@
 #!/bin/sh
-redshift -vl 51.2555:6.3965
+redshift -v -l 51.2555:6.3965
