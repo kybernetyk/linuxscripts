@@ -1,3 +1,0 @@
-#!/bin/sh
-miner_due >> ~/.local/logs/miner_due.log
-cat ~/.local/logs/miner_due.log | tail -n 100 |asciigraph -h 23 -c "XMR due"
