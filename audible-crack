@@ -7,7 +7,7 @@ audible4linux () {
   #this takes the current file name and strips the extension.
   name=$( basename $file .aax)
   #your ffmpeg to decrypt your .aax file.
-  ffmpeg -threads 32 -activation_bytes 25eacf03 -i $file  -vn -c:a copy $name.m4a
+  ffmpeg -threads 0 -activation_bytes 25eacf03 -i $file  -vn -c:a copy $name.m4a
 }
 
 #calls the function and takes the file as input.
