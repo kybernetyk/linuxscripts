@@ -1,0 +1,2 @@
+#!/bin/sh
+ssh ultrablast.cyber.vodka say alexa, alexa, alexa, stop, play $1
