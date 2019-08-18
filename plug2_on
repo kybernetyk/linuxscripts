@@ -1,2 +1,2 @@
 #!/bin/sh
-tplug.py -t 192.168.0.94 -c on |grep Re |cut -d ' ' -f 2- |jq
+tplug.py -t 192.168.0.22 -c on |grep Re |cut -d ' ' -f 2- |jq
