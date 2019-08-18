@@ -1,2 +1,3 @@
 #!/bin/sh
 tplug.py -t 192.168.0.144 -c off |grep Re |cut -d ' ' -f 2- |jq
+beep

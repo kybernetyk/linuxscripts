@@ -1,4 +1,4 @@
 #!/bin/sh
 temps >> ~/.local/logs/temps.log
-cat ~/.local/logs/temps.log |tail -n 230 |grep CPU1 |awk '{print $2}' | asciigraph -h 23 -c "CPU1 Temp"
+cat ~/.local/logs/temps.log |tail -n 230 |grep CPU1 |awk '{print $2}' | asciigraph -h 20 -c "CPU1 Temp"
 

@@ -1,10 +1,12 @@
 #!/bin/sh
+beep
 homedir=~
 eval homedir=$homedir
 date=`date +%Y-%m-%d-%H:%M:%S`
 fn="${homedir}/Pictures/screenshots/${date}_screenshot.png"
-notify-send "Screenshot mode"
+#notify-send "Screenshot mode"
 import -border $fn
 #scrot -bs $fn
-notify-send "Screenshot saved to ${fn}"
+#notify-send "Screenshot saved to ${fn}"
+beep2
 echo $fn

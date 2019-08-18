@@ -1,0 +1,2 @@
+#!/bin/sh
+paplay ~/.local/sounds/beep2.ogg
