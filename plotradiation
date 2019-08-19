@@ -1,4 +1,4 @@
 #!/bin/sh
 geiger >> ~/.local/logs/radiation.log
-cat ~/.local/logs/radiation.log |tail -n 100 | awk '{print $1}' | asciigraph -h 23 -c "CPM"
+cat ~/.local/logs/radiation.log |tail -n 100 | awk '{print $1}' | asciigraph -h 20 -c "CPM"
 
