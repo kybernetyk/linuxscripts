@@ -1,0 +1,6 @@
+#!/bin/sh
+cpumhzhigheest >> ~/.local/logs/mhz.log
+#cpumhzavg >> ~/.local/logs/mhz.log
+
+cat ~/.local/logs/mhz.log |tail -n 100 |  asciigraph -h 20 -c "CPU highest clock"
+

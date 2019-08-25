@@ -1,0 +1,2 @@
+#!/bin/sh
+cat /proc/cpuinfo | grep MHz | awk '{print $4}' |sort  -r

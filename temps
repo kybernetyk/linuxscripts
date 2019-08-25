@@ -3,6 +3,7 @@ json=`sensors -j`
 cputemp=`echo $json |sed 's/k10temp-pci-00c3/gulp/' |jq -r .gulp.Tdie.temp1_input`
 cputemp2=`echo $json |sed 's/k10temp-pci-00cb/gulp/' |jq -r .gulp.Tdie.temp1_input`
 gputemp=`echo $json |sed 's/amdgpu-pci-0b00/gulp/' |jq -r .gulp.temp1.temp1_input`
+#gputemp=`echo $json |sed 's/amdgpu-pci-4400/gulp/' |jq -r .gulp.temp1.temp1_input`
 
 echo "CPU1: ${cputemp}"
 echo "CPU2: ${cputemp2}"
