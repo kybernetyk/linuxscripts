@@ -1,0 +1,5 @@
+#!/bin/sh
+mhz=`lscpu |grep MHz |head -n 1 |awk '{print $3}'`
+ghz=`qalc -t "${mhz} / 1000.0"`
+printf "%.2f\n" $ghz
+
