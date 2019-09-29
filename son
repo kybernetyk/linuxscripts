@@ -8,12 +8,14 @@ def get_zone(name):
 def is_playing(zone):
     return zone.get_current_transport_info()["current_transport_state"] == "PLAYING"
 
-def p_track(zone):
+def p_track(zone, nopref=False):
     prefix = ""
     if is_playing(zone):
         prefix = "🎵 "
     else:
         prefix = "💤 "
+    if nopref:
+        prefix = ""
     artist = zone.get_current_track_info()["artist"]
     title = zone.get_current_track_info()["title"]
     s = prefix + artist + " - " + title
@@ -38,7 +40,7 @@ if sys.argv[1] == 'n':
     if not is_playing(z):
         z.play()
     z.next()
-    p_track(z)
+    p_track(z, nopref=True)
     exit()
 
 if sys.argv[1] == 'p':
