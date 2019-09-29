@@ -1,0 +1,56 @@
+#!/usr/bin/env python
+import soco
+import sys
+
+def get_zone(name):
+	return soco.discovery.by_name(name)
+
+def is_playing(zone):
+	return zone.get_current_transport_info()["current_transport_state"] == "PLAYING"
+
+def p_track(zone):
+	prefix = ""
+	if is_playing(zone):
+		prefix = "🎵 "
+	else:
+		prefix = "💤 "
+	artist = zone.get_current_track_info()["artist"]
+	title = zone.get_current_track_info()["title"]
+	s = prefix + artist + " - " + title
+	print(s)
+
+def p_trackinfo(zone):
+	print(zone.get_current_track_info())
+
+def p_transport(zone):
+	print(zone.get_current_transport_info())
+
+z = get_zone("Bedroom")
+if z is None:
+	print("No Speaker found!")
+	exit()
+
+if len(sys.argv) == 1:
+	p_track(z)
+	exit()
+
+if sys.argv[1] == 'n':
+	if not is_playing(z):
+		z.play()
+	z.next()
+	exit()
+
+if sys.argv[1] == 'p':
+	if is_playing(z):
+		z.pause()
+	else:
+		z.play()
+
+if sys.argv[1] == 't':
+	p_transport(z)
+	exit()
+
+if sys.argv[1] == 'i':
+	p_trackinfo(z)
+	exit()
+
