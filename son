@@ -3,7 +3,8 @@ import soco
 import sys
 
 def get_zone(name):
-    return soco.discovery.by_name(name)
+    return soco.SoCo("192.168.0.88")
+    #return soco.discovery.by_name(name)
 
 def is_playing(zone):
     return zone.get_current_transport_info()["current_transport_state"] == "PLAYING"
@@ -20,6 +21,16 @@ def p_track(zone, nopref=False):
     title = zone.get_current_track_info()["title"]
     s = prefix + artist + " - " + title
     print(s)
+
+def p_track_poly(zone):
+   vol = zone.volume
+   if is_playing(zone):
+       artist = zone.get_current_track_info()["artist"]
+       title = zone.get_current_track_info()["title"]
+       s = "> " + artist + " - " + title + " | " + " " + str(vol) + "%"
+       print(s)
+   else:
+        print("SONOS |  " + str(vol) + "%")
 
 def p_trackinfo(zone):
     print(zone.get_current_track_info())
@@ -56,4 +67,9 @@ if sys.argv[1] == 't':
 if sys.argv[1] == 'i':
     p_trackinfo(z)
     exit()
+
+if sys.argv[1] == 'poly':
+    p_track_poly(z)
+    exit()
+
 
