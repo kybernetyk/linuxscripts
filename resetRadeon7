@@ -14,4 +14,4 @@ echo "1" | sudo tee -a /sys/bus/pci/rescan
 
 lspci -vv | grep vfio -B 12
 
-sudo systemctl restart amdgpu-fancontrol
+#sudo systemctl restart amdgpu-fancontrol

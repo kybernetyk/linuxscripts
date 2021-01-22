@@ -5,8 +5,12 @@ import urllib
 import os
 
 def get_zone(name):
-    return soco.SoCo("192.168.0.88")
-    #return soco.discovery.by_name(name)
+    #return soco.SoCo("192.168.0.88")
+    return soco.discovery.by_name(name)
+
+def p_disc():
+    for z in soco.discover():
+        print(z.get_speaker_info()['zone_name'] + " - " + str(z.ip_address))
 
 def is_playing(zone):
     return zone.get_current_transport_info()["current_transport_state"] == "PLAYING"
@@ -53,14 +57,17 @@ def p_path(zone):
     fn3 = urllib.parse.unquote(fn2)
     print(fn3)
 
-
-z = get_zone("Bedroom")
+z = get_zone("Schlafzimmer")
 if z is None:
     print("No Speaker found!")
     exit()
 
 if len(sys.argv) == 1:
     p_track(z)
+    exit()
+
+if sys.argv[1] == 'd':
+    p_disc()
     exit()
 
 if sys.argv[1] == 'n':

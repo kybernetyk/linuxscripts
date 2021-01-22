@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "starting SOCKS5 proxy on localhost:1337..."
+ssh -D 1337 -q -C -N -p 10020 kyb@cyber.vodka

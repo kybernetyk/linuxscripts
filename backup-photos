@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+rsync -aAXv --delete --info=progress2 --numeric-ids /media/usb/Pictures/ /mnt/userdata/photobackup
